@@ -1,0 +1,50 @@
+[
+  {
+    "interaction_id": "b611a328-cc83-4b9d-a903-dcdccf78f937",
+    "user_query": "i want to book a parking slot for my car",
+    "agent_response": "To book a parking slot for your car, I need to know a few more details.\n* Which mall would you like to park at?\n* What is your car's license plate number?\n* When would you like to park (date and time)?",
+    "timestamp": "2025-05-18T22:07:14.820633+00:00"
+  },
+  {
+    "interaction_id": "81235ade-8d76-4353-890e-e7dbc56198e9",
+    "user_query": "Phenix mall",
+    "agent_response": "I think you meant \"Phoenix Mall\".\nWe have two Phoenix malls: \n* Phoenix Mall of Asia\n* Phoenix Market City\nWhich one would you like to park at, Shaik?",
+    "timestamp": "2025-05-18T22:34:00.966934+00:00"
+  },
+  {
+    "interaction_id": "312b1753-83b3-48b2-a995-57596d620152",
+    "user_query": "Asia",
+    "agent_response": "You've chosen Phoenix Mall of Asia.\n1. Mall: Phoenix Mall of Asia\n2. Vehicle type: car\nNext, I need to know:\n* Your car's license plate number\n* When you'd like to park (date and time)",
+    "timestamp": "2025-05-18T22:34:10.791790+00:00"
+  },
+  {
+    "interaction_id": "ca755846-e8c9-42f9-a160-98f1539d896f",
+    "user_query": "KA24AP1235",
+    "agent_response": "You've provided your car's license plate number: KA24AP1235.\n\n1. **Mall**: Phoenix Mall of Asia\n2. **Vehicle type**: car\n3. **License plate number**: KA24AP1235\n\nNext, I need to know:\n* When you'd like to park (date and time)",
+    "timestamp": "2025-05-18T22:34:24.030905+00:00"
+  },
+  {
+    "interaction_id": "49f671c1-036b-43f4-b331-93dddc9eca68",
+    "user_query": "may 25 at 6 pm",
+    "agent_response": "You'd like to park on May 25 at 6 pm.\n\n1. **Mall**: Phoenix Mall of Asia\n2. **Vehicle type**: car\n3. **License plate number**: KA24AP1235\n4. **Date and time**: May 25, 6 pm\n\nI'll check for available parking slots at Phoenix Mall of Asia for a car on May 25 at 6 pm.\n\nAvailable slots:\n* Slot ID: 1, Mall: Phoenix Mall of Asia, Type: car, Number: C001, Rate: \u20b950.0/hour\n* Slot ID: 2, Mall: Phoenix Mall of Asia, Type: car, Number: C002, Rate: \u20b950.0/hour\n* Slot ID: 3, Mall: Phoenix Mall of Asia, Type: car, Number: C003, Rate: \u20b950.0/hour\n\nTo book a slot, please use the format: \"Book slot [SLOT_ID]\" \nFor example: \"Book slot 1\"",
+    "timestamp": "2025-05-18T22:34:44.520347+00:00"
+  },
+  {
+    "interaction_id": "782e502a-6f5e-406f-85c6-ed070a971f88",
+    "user_query": "yes BooK Slot 3",
+    "agent_response": "I've booked Slot ID: 3 for you at Phoenix Mall of Asia.\n\n1. **Mall**: Phoenix Mall of Asia\n2. **Vehicle type**: car\n3. **License plate number**: KA24AP1235\n4. **Date and time**: May 25, 6 pm\n5. **Slot ID**: 3\n6. **Slot number**: C003\n7. **Rate**: \u20b950.0/hour\n\nYour booking is confirmed, Shaik.\n\nIf you need to cancel or view your bookings, you can use the following commands:\n* \"Cancel my booking\"\n* \"Check my bookings\"\n* \"Show my bookings\"\n* \"View my bookings\"\n* \"My bookings\"",
+    "timestamp": "2025-05-18T22:36:40.196489+00:00"
+  },
+  {
+    "interaction_id": "2438c785-b948-4c74-847c-9cbe0531ec8c",
+    "user_query": "i want to park my bike",
+    "agent_response": "You'd like to park your bike, Shaik.\n\n1. **Vehicle type**: bike\n2. **License plate number**: KA24AP1235 (previously provided)\n\nNext, I need to know:\n* Which mall would you like to park at?\n* When would you like to park (date and time)?\n\nNote: You previously parked your car at Phoenix Mall of Asia. Would you like to park your bike at the same mall?",
+    "timestamp": "2025-05-18T22:45:32.840600+00:00"
+  },
+  {
+    "interaction_id": "de477d6c-13da-4b5d-a85d-e5c10e2f6708",
+    "user_query": "no my bike number is KA24AP0005",
+    "agent_response": "You've provided a different license plate number for your bike: KA24AP0005.\n\n1. **Vehicle type**: bike\n2. **License plate number**: KA24AP0005\n\nNext, I need to know:\n* Which mall would you like to park at?\n* When would you like to park (date and time)?\n\nPlease let me know your preferred mall and parking time, Shaik.",
+    "timestamp": "2025-05-18T22:45:59.482023+00:00"
+  }
+]

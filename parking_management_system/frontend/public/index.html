@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // This script runs before app.js to ensure user display is set immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Index.html DOM loaded, checking user login');
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                // Redirect to login page if not logged in
+                console.log('No user ID found in index.html, redirecting to login');
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Set user display immediately (will be updated again by app.js)
+            const userDisplay = document.getElementById('userDisplay');
+            if (userDisplay) {
+                const userName = localStorage.getItem('userName') || 'User';
+                userDisplay.innerHTML = `<i class="fas fa-user-circle mr-2 text-xl"></i>${userName} <span class="text-xs opacity-75">(ID: ${userId})</span>`;
+                console.log('User display set in index.html');
+            } else {
+                console.error('User display element not found in index.html');
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between px-4 py-3">
+            <h1 class="text-2xl font-bold">Parking Management System</h1>
+
+            <div class="flex items-center space-x-4">
+                <!-- Main Navigation Links -->
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-comments mr-1"></i> Chat
+                </a>
+                <a href="info.html" class="nav-link">
+                    <i class="fas fa-info-circle mr-1"></i> Info
+                </a>
+                <a href="available-slots.html" class="nav-link">
+                    <i class="fas fa-parking mr-1"></i> Available Slots
+                </a>
+                <a href="bookings.html" class="nav-link">
+                    <i class="fas fa-ticket-alt mr-1"></i> Bookings
+                </a>
+
+                <!-- User Info -->
+                <span id="userDisplay" class="bg-blue-700 px-4 py-2 rounded-md flex items-center min-w-[150px] justify-center border border-blue-500"></span>
+
+                <!-- Logout Button -->
+                <button type="button" id="logoutButton" class="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-md">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Main Content -->
+        <div id="mainContent">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Chat History Sidebar -->
+                <div id="chatHistorySidebar" class="lg:col-span-2 hidden lg:block">
+                    <div class="panel h-full flex flex-col">
+                        <div class="panel-header border-b">
+                            <h2 class="text-lg font-semibold">Conversations</h2>
+                        </div>
+                        <div class="p-3 bg-gray-50 border-b border-gray-200">
+                            <div class="relative">
+                                <input type="text" id="searchConversations" placeholder="Search conversations..."
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md pl-9">
+                                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+                        <div id="conversationsList" class="panel-body overflow-y-auto flex-grow">
+                            <!-- Conversations will be listed here -->
+                            <div class="text-center py-4 text-gray-500">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p class="text-sm mt-2">Loading conversations...</p>
+                            </div>
+                        </div>
+                        <div class="p-3 border-t border-gray-200 bg-gray-50 text-xs text-gray-500">
+                            <p class="mb-1"><i class="fas fa-info-circle mr-1"></i> Tips:</p>
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Click on a conversation to view it</li>
+                                <li>Use <i class="fas fa-edit text-blue-500"></i> to rename a conversation</li>
+                                <li>Use <i class="fas fa-trash-alt text-red-500"></i> to delete a conversation</li>
+                                <li>Use the "New Chat" button in the middle panel to start a new conversation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Interface (Middle) -->
+                <div id="chatInterfacePanel" class="lg:col-span-6"></div>
+
+                <!-- Parking Info (Right) -->
+                <div id="parkingInfoPanel" class="lg:col-span-4"></div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Load modular JavaScript files -->
+    <script src="js/config.js"></script>
+    <script src="js/utils/api.js"></script>
+    <script src="js/components/chatInterface.js"></script>
+    <script src="js/components/parkingInfo.js"></script>
+    <script src="js/components/chatSidebar.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[
+  {
+    "interaction_id": "c6fe1621-88cf-476a-87de-5c0c9ca8a5d4",
+    "user_query": "show the slots in orion mall",
+    "agent_response": "John, I need to know what type of vehicle you have to show you the available slots at Orion Mall.\n* Car\n* Bike\n* Truck\n\nPlease let me know your vehicle type.",
+    "timestamp": "2025-05-19T11:21:11.465839+00:00"
+  },
+  {
+    "interaction_id": "b2c3f428-c3a8-43e1-b916-0741305a2327",
+    "user_query": "for car",
+    "agent_response": "John, here are the available parking slots for cars at Orion Mall:\n* Slot ID: 154, Mall: Orion Mall, Type: car, Number: C11, Rate: \u20b950.0/hour\n* Slot ID: 155, Mall: Orion Mall, Type: car, Number: C12, Rate: \u20b950.0/hour\n* Slot ID: 156, Mall: Orion Mall, Type: car, Number: C13, Rate: \u20b950.0/hour\n* Slot ID: 164, Mall: Orion Mall, Type: car, Number: C21, Rate: \u20b950.0/hour\n* Slot ID: 165, Mall: Orion Mall, Type: car, Number: C22, Rate: \u20b950.0/hour\n* Slot ID: 166, Mall: Orion Mall, Type: car, Number: C23, Rate: \u20b950.0/hour\n* Slot ID: 174, Mall: Orion Mall, Type: car, Number: C31, Rate: \u20b950.0/hour\n* Slot ID: 175, Mall: Orion Mall, Type: car, Number: C32, Rate: \u20b950.0/hour\n* Slot ID: 176, Mall: Orion Mall, Type: car, Number: C33, Rate: \u20b950.0/hour\n\nTo book a slot, please use the format: \"Book slot [SLOT_ID]\"\nFor example: \"Book slot 154\" \n\nAlso, I need to know your license plate number and the time period you want to park. \nPlease provide me with this information.",
+    "timestamp": "2025-05-19T11:21:18.940573+00:00"
+  }
+]

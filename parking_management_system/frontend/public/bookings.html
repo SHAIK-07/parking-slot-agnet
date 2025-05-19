@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System - Your Bookings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                // Redirect to login page if not logged in
+                window.location.href = 'login.html';
+            } else {
+                // Display user ID in header
+                const userDisplay = document.getElementById('userDisplay');
+                if (userDisplay) {
+                    const userName = localStorage.getItem('userName') || 'User';
+                    userDisplay.innerHTML = `<i class="fas fa-user-circle mr-2 text-xl"></i>${userName} <span class="text-xs opacity-75">(ID: ${userId})</span>`;
+                }
+
+                // Initialize the bookings page
+                initializeBookingsPage();
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between px-4 py-3">
+            <h1 class="text-2xl font-bold">Parking Management System</h1>
+
+            <div class="flex items-center space-x-4">
+                <!-- Main Navigation Links -->
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-comments mr-1"></i> Chat
+                </a>
+                <a href="info.html" class="nav-link">
+                    <i class="fas fa-info-circle mr-1"></i> Info
+                </a>
+                <a href="available-slots.html" class="nav-link">
+                    <i class="fas fa-parking mr-1"></i> Available Slots
+                </a>
+                <a href="bookings.html" class="nav-link active">
+                    <i class="fas fa-ticket-alt mr-1"></i> Bookings
+                </a>
+
+                <!-- User Info -->
+                <span id="userDisplay" class="bg-blue-700 px-4 py-2 rounded-md flex items-center min-w-[150px] justify-center border border-blue-500"></span>
+
+                <!-- Logout Button -->
+                <button type="button" id="logoutButton" class="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-md">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-blue-700">
+                    <i class="fas fa-ticket-alt mr-2"></i> Your Bookings
+                </h2>
+                <button type="button" id="refreshBookingsButton" class="bg-blue-100 text-blue-700 px-3 py-2 rounded flex items-center hover:bg-blue-200">
+                    <i class="fas fa-sync-alt mr-1"></i> Refresh
+                </button>
+            </div>
+
+            <div id="bookingsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="text-center py-8 col-span-full">
+                    <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
+                    <p class="mt-2 text-gray-600">Loading your bookings...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Load JavaScript files -->
+    <script src="js/config.js"></script>
+    <script src="js/utils/api.js"></script>
+    <script>
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            console.log('Logout button clicked');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('currentConversationId');
+            window.location.href = 'login.html';
+        });
+
+        // Initialize Bookings Page
+        function initializeBookingsPage() {
+            // Add event listener for refresh button
+            document.getElementById('refreshBookingsButton').addEventListener('click', fetchBookings);
+
+            // Initial fetch
+            fetchBookings();
+        }
+
+        // Fetch bookings
+        function fetchBookings() {
+            const bookingsList = document.getElementById('bookingsList');
+
+            // Show loading indicator
+            bookingsList.innerHTML = `
+                <div class="text-center py-8 col-span-full">
+                    <i class="fas fa-spinner fa-spin text-blue-500 text-2xl"></i>
+                    <p class="mt-2 text-gray-600">Loading your bookings...</p>
+                </div>
+            `;
+
+            // Get the current user ID
+            const currentUserId = localStorage.getItem('userId');
+            if (!currentUserId) {
+                bookingsList.innerHTML = `
+                    <div class="text-center py-8 col-span-full">
+                        <p class="text-red-500">Please log in to view your bookings.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Fetch bookings from API
+            const bookingsUrl = `${API_BASE_URL}/bookings?user_id=${currentUserId}`;
+
+            fetch(bookingsUrl, {
+                headers: {
+                    'X-User-ID': currentUserId
+                }
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(bookings => {
+                if (bookings.length === 0) {
+                    bookingsList.innerHTML = `
+                        <div class="text-center py-8 col-span-full bg-gray-50 rounded-lg border border-gray-200">
+                            <i class="fas fa-calendar-times text-gray-400 text-3xl mb-2"></i>
+                            <p class="text-gray-600">You don't have any bookings yet.</p>
+                            <p class="mt-2 text-sm text-blue-600">
+                                Use the chat assistant or the Available Slots page to make a booking.
+                            </p>
+                            <a href="available-slots.html" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">
+                                <i class="fas fa-parking mr-1"></i> Find Available Slots
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                bookingsList.innerHTML = '';
+                bookings.forEach(booking => {
+                    renderBookingCard(booking);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching bookings:', error);
+                bookingsList.innerHTML = `
+                    <div class="text-center py-8 col-span-full bg-red-50 rounded-lg border border-red-200">
+                        <i class="fas fa-exclamation-circle text-red-500 text-3xl mb-2"></i>
+                        <p class="text-red-600">Error loading bookings.</p>
+                        <p class="mt-2 text-sm text-red-500">
+                            Please try again later or contact support.
+                        </p>
+                    </div>
+                `;
+            });
+        }
+
+        // Render a booking card
+        function renderBookingCard(booking) {
+            const bookingsList = document.getElementById('bookingsList');
+            const bookingCard = document.createElement('div');
+
+            // Set background color based on vehicle type
+            let bgColor = '';
+            let vehicleIcon = '';
+            if (booking.vehicle_type === 'car') {
+                bgColor = 'bg-blue-50 border-blue-200';
+                vehicleIcon = '<i class="fas fa-car text-blue-500 mr-1"></i>';
+            } else if (booking.vehicle_type === 'truck') {
+                bgColor = 'bg-green-50 border-green-200';
+                vehicleIcon = '<i class="fas fa-truck text-green-500 mr-1"></i>';
+            } else if (booking.vehicle_type === 'bike') {
+                bgColor = 'bg-purple-50 border-purple-200';
+                vehicleIcon = '<i class="fas fa-motorcycle text-purple-500 mr-1"></i>';
+            }
+
+            // Format dates
+            const startDate = new Date(booking.start_time);
+            const endDate = new Date(booking.end_time);
+
+            // Format dates for display - use local date and time format with 12-hour clock
+            const formatOptions = {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            const formattedStartDate = startDate.toLocaleString(undefined, formatOptions);
+            const formattedEndDate = endDate.toLocaleString(undefined, formatOptions);
+
+            // Check if booking can be cancelled (only confirmed bookings can be cancelled)
+            const canCancel = booking.status.toLowerCase() === 'confirmed';
+
+            // Create booking card
+            bookingCard.className = `p-4 rounded-lg border ${bgColor} hover:shadow-md transition-shadow duration-200`;
+            bookingCard.dataset.bookingId = booking.id;
+            bookingCard.innerHTML = `
+                <div class="flex flex-col h-full">
+                    <div class="flex justify-between items-start">
+                        <div class="font-medium flex items-center">
+                            ${vehicleIcon} ${booking.mall_name} - Slot ${booking.slot_number}
+                        </div>
+                        <div class="font-bold text-lg">₹${booking.total_amount}</div>
+                    </div>
+
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm text-gray-600">
+                            <div><i class="far fa-calendar-alt mr-1"></i> From: ${formattedStartDate}</div>
+                            <div><i class="far fa-calendar-alt mr-1"></i> To: ${formattedEndDate}</div>
+                        </div>
+                        <div class="text-xs px-2 py-1 rounded-full ${getStatusClass(booking.status)}">
+                            ${booking.status}
+                        </div>
+                    </div>
+
+                    <div class="mt-2 text-sm">
+                        <span class="font-medium">Vehicle:</span> ${booking.vehicle_number || 'Not specified'}
+                    </div>
+
+                    <div class="mt-3 flex justify-end gap-2 mt-auto">
+                        ${canCancel ? `
+                        <button type="button" class="cancel-booking-btn text-xs bg-red-100 text-red-700 px-2 py-1 rounded hover:bg-red-200">
+                            <i class="fas fa-times-circle mr-1"></i> Cancel
+                        </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+
+            // Add cancel button event listener if booking can be cancelled
+            if (canCancel) {
+                const cancelBtn = bookingCard.querySelector('.cancel-booking-btn');
+                cancelBtn.addEventListener('click', () => {
+                    cancelBooking(booking.id);
+                });
+            }
+
+            bookingsList.appendChild(bookingCard);
+        }
+
+        // Get status class for styling
+        function getStatusClass(status) {
+            switch (status.toLowerCase()) {
+                case 'active':
+                case 'confirmed':
+                    return 'bg-green-100 text-green-800';
+                case 'completed':
+                    return 'bg-blue-100 text-blue-800';
+                case 'cancelled':
+                    return 'bg-red-100 text-red-800';
+                case 'pending':
+                    return 'bg-yellow-100 text-yellow-800';
+                default:
+                    return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        // Cancel a booking
+        function cancelBooking(bookingId) {
+            if (!confirm('Are you sure you want to cancel this booking?')) {
+                return;
+            }
+
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                console.error('No user ID found in localStorage');
+                alert('Please log in to cancel a booking');
+                return;
+            }
+
+            // Show loading state
+            const bookingCard = document.querySelector(`[data-booking-id="${bookingId}"]`);
+            if (bookingCard) {
+                const cancelBtn = bookingCard.querySelector('.cancel-booking-btn');
+                if (cancelBtn) {
+                    cancelBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Cancelling...';
+                    cancelBtn.disabled = true;
+                    cancelBtn.classList.add('opacity-50');
+                }
+            }
+
+            // Call API to cancel booking
+            const cancelUrl = `${API_BASE_URL}/bookings/${bookingId}/cancel`;
+
+            fetch(cancelUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-User-ID': userId
+                }
+            })
+            .then(response => {
+                // Try to parse the response as JSON
+                return response.json().then(data => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to cancel booking: ${response.status} - ${data.detail || 'Unknown error'}`);
+                    }
+                    return data;
+                }).catch(err => {
+                    // Handle JSON parsing errors
+                    if (!response.ok) {
+                        throw new Error(`Failed to cancel booking: ${response.status}`);
+                    }
+                    return { message: 'Success (no JSON response)' };
+                });
+            })
+            .then(data => {
+                // Show success message
+                alert('Booking cancelled successfully');
+
+                // Refresh bookings list
+                fetchBookings();
+            })
+            .catch(error => {
+                console.error('Error cancelling booking:', error);
+
+                // Show error message
+                alert(error.message || 'Failed to cancel booking. Please try again.');
+
+                // Reset button state
+                if (bookingCard) {
+                    const cancelBtn = bookingCard.querySelector('.cancel-booking-btn');
+                    if (cancelBtn) {
+                        cancelBtn.innerHTML = '<i class="fas fa-times-circle mr-1"></i> Cancel';
+                        cancelBtn.disabled = false;
+                        cancelBtn.classList.remove('opacity-50');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

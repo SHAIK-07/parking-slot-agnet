@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-parking fa-3x"></i>
+                <h1>Parking Management System</h1>
+                <p>Please enter your User ID to continue</p>
+            </div>
+            <div class="login-form">
+                <div class="input-group">
+                    <label for="userName">Your Name</label>
+                    <input type="text" id="userName" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" placeholder="Enter your User ID" required>
+                </div>
+                <button type="button" id="loginButton" class="login-button">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <div class="demo-users">
+                    <p>Demo Users:</p>
+                    <button type="button" class="demo-user-button" data-userid="1" data-username="John">John (User 1)</button>
+                    <button type="button" class="demo-user-button" data-userid="2" data-username="Shaik">Shaik (User 2)</button>
+                    <button type="button" class="demo-user-button" data-userid="3" data-username="Priya">Priya (User 3)</button>
+                </div>
+            </div>
+            <div id="loginError" class="login-error"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

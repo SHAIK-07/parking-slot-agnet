@@ -1,0 +1,26 @@
+fastapi==0.104.1
+uvicorn==0.23.2
+sqlalchemy==2.0.23
+bcrypt
+# Using SQLite instead of MySQL
+# pymysql==1.1.0
+# cryptography==41.0.5
+python-dotenv==1.0.0
+# Direct API access instead of LangChain
+requests==2.31.0
+# No vector store that requires compilation
+numpy==1.26.1
+pydantic==2.4.2
+groq==0.4.1
+# Use a pure Python embedding model
+sentence-transformers==2.2.2
+huggingface-hub==0.19.4
+passlib==1.7.4
+
+langchain>=0.0.267
+langchain-community>=0.0.6
+sentence-transformers>=2.2.2
+chromadb>=0.4.13
+pydantic>=2.0.0
+fastapi>=0.100.0
+uvicorn>=0.23.0

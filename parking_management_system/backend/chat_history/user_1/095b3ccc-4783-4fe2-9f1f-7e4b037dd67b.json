@@ -1,0 +1,14 @@
+[
+  {
+    "interaction_id": "27eeaff5-9b44-4577-a090-a0973e0c54c9",
+    "user_query": "New conversation",
+    "agent_response": "Welcome to the Parking Management System! How can I assist you today?",
+    "timestamp": "2025-05-18T20:40:19.300641+00:00"
+  },
+  {
+    "interaction_id": "7e93f147-6d12-4ff0-b003-eba737516845",
+    "user_query": "i want to book a slot",
+    "agent_response": "To book a slot, I need to know a few details from you.\n1. Which mall would you like to park at?\n* Phoenix Mall of Asia\n* Phoenix Market City\n* UB City Mall\n* Nexus Mall\n* Mantri Square Mall\n* Orion Mall\n* Lulu Mall\n* VR Mall\n* Royal Meenakshi Mall\n* Nexus Shantiniketan Mall\n\n2. What type of vehicle do you have?\n* Car\n* Bike\n* Truck\n\nPlease let me know your preferences.",
+    "timestamp": "2025-05-18T20:40:30.488468+00:00"
+  }
+]

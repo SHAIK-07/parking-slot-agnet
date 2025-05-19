@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Management System - Info</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                // Redirect to login page if not logged in
+                window.location.href = 'login.html';
+            } else {
+                // Display user ID in header
+                const userDisplay = document.getElementById('userDisplay');
+                if (userDisplay) {
+                    const userName = localStorage.getItem('userName') || 'User';
+                    userDisplay.innerHTML = `<i class="fas fa-user-circle mr-2 text-xl"></i>${userName} <span class="text-xs opacity-75">(ID: ${userId})</span>`;
+                }
+            }
+        });
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="container mx-auto flex items-center justify-between px-4 py-3">
+            <h1 class="text-2xl font-bold">Parking Management System</h1>
+
+            <div class="flex items-center space-x-4">
+                <!-- Main Navigation Links -->
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-comments mr-1"></i> Chat
+                </a>
+                <a href="info.html" class="nav-link active">
+                    <i class="fas fa-info-circle mr-1"></i> Info
+                </a>
+                <a href="available-slots.html" class="nav-link">
+                    <i class="fas fa-parking mr-1"></i> Available Slots
+                </a>
+                <a href="bookings.html" class="nav-link">
+                    <i class="fas fa-ticket-alt mr-1"></i> Bookings
+                </a>
+
+                <!-- User Info -->
+                <span id="userDisplay" class="bg-blue-700 px-4 py-2 rounded-md flex items-center min-w-[150px] justify-center border border-blue-500"></span>
+
+                <!-- Logout Button -->
+                <button type="button" id="logoutButton" class="bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-md">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-bold text-blue-700 mb-4">
+                <i class="fas fa-info-circle mr-2"></i> About Our Parking System
+            </h2>
+
+            <div class="bg-blue-50 p-5 rounded-lg border border-blue-100 mb-6">
+                <h3 class="text-xl font-semibold text-blue-800 mb-3">Overview</h3>
+                <p class="mb-4">
+                    Our mall parking management system helps you find, book, and manage parking spaces at 10 popular malls.
+                    Each mall has dedicated slots for different vehicle types with competitive rates.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-white p-4 rounded-lg border border-blue-200 shadow-sm">
+                        <div class="text-center text-blue-600 text-3xl mb-2">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h4 class="font-semibold text-center mb-2">Car Parking</h4>
+                        <p class="text-center text-gray-700">₹50/hour</p>
+                        <p class="text-center text-sm text-gray-500">3 slots per mall</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-purple-200 shadow-sm">
+                        <div class="text-center text-purple-600 text-3xl mb-2">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <h4 class="font-semibold text-center mb-2">Bike Parking</h4>
+                        <p class="text-center text-gray-700">₹20/hour</p>
+                        <p class="text-center text-sm text-gray-500">4 slots per mall</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-green-200 shadow-sm">
+                        <div class="text-center text-green-600 text-3xl mb-2">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4 class="font-semibold text-center mb-2">Truck Parking</h4>
+                        <p class="text-center text-gray-700">₹100/hour</p>
+                        <p class="text-center text-sm text-gray-500">3 slots per mall</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-yellow-50 p-5 rounded-lg border border-yellow-100 mb-6">
+                <h3 class="text-xl font-semibold text-yellow-800 mb-3">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Our Malls
+                </h3>
+                <p class="mb-4">We currently offer parking services at the following malls:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Phoenix Mall of Asia</li>
+                        <li>Orion Mall</li>
+                        <li>Forum Mall</li>
+                        <li>UB City Mall</li>
+                        <li>GT World Mall</li>
+                    </ul>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Mantri Square Mall</li>
+                        <li>Garuda Mall</li>
+                        <li>Vega City Mall</li>
+                        <li>Royal Meenakshi Mall</li>
+                        <li>Nexus Mall</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-green-50 p-5 rounded-lg border border-green-100 mb-6">
+                <h3 class="text-xl font-semibold text-green-800 mb-3">
+                    <i class="fas fa-book mr-2"></i> How to Use
+                </h3>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold text-green-700 mb-2">1. Finding Available Slots</h4>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <p class="mb-2">You can find available parking slots in two ways:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Use the <strong>Chat Assistant</strong> and ask about available slots</li>
+                            <li>Go to the <strong>Available Slots</strong> page and use the filters</li>
+                        </ul>
+                        <div class="mt-3 p-3 bg-gray-50 rounded border border-gray-200">
+                            <p class="text-sm font-medium text-gray-700">Example Chat Query:</p>
+                            <p class="text-sm italic mt-1">"Show me available car parking slots at Phoenix Mall for tomorrow at 3 PM for 2 hours"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold text-green-700 mb-2">2. Booking a Slot</h4>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <p class="mb-2">You can book a parking slot in two ways:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Through the <strong>Chat Assistant</strong> by providing all required details</li>
+                            <li>Directly from the <strong>Available Slots</strong> page by clicking the "Book" button</li>
+                        </ul>
+                        <p class="mt-2">Required information for booking:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Mall name</li>
+                            <li>Vehicle type (car, bike, or truck)</li>
+                            <li>Date and time</li>
+                            <li>Duration (in hours)</li>
+                            <li>Vehicle license plate number</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <h4 class="font-semibold text-green-700 mb-2">3. Managing Bookings</h4>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <p class="mb-2">You can manage your bookings in two ways:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Through the <strong>Chat Assistant</strong> by asking to view or cancel bookings</li>
+                            <li>From the <strong>Bookings</strong> page where you can view and cancel bookings</li>
+                        </ul>
+                        <div class="mt-3 p-3 bg-gray-50 rounded border border-gray-200">
+                            <p class="text-sm font-medium text-gray-700">Example Chat Query:</p>
+                            <p class="text-sm italic mt-1">"Show my bookings" or "Cancel booking 12"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Load JavaScript files -->
+    <script src="js/config.js"></script>
+    <script>
+        // Logout functionality
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            console.log('Logout button clicked');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('currentConversationId');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
