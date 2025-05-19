@@ -94,17 +94,14 @@ parking_management_system/
    cd ../frontend
    ```
 
-2. Install dependencies:
+
+
+2. Start the development server:
    ```bash
-   npm install
+   python serve.py
    ```
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to `http://localhost:3000`
+3. Open your browser and navigate to `http://localhost:3000`
 
 ## Usage
 

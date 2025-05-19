@@ -1,83 +1,55 @@
 {
   "user_id": "2",
   "conversations": {
-    "b2e68894-e89e-473c-a0fa-37f86ad809c4": {
-      "name": "Conversation 2",
-      "created_at": "2025-05-18T22:07:14.820633+00:00",
-      "updated_at": "2025-05-18T22:45:59.482023+00:00",
-      "interactions": [
-        {
-          "interaction_id": "b611a328-cc83-4b9d-a903-dcdccf78f937",
-          "timestamp": "2025-05-18T22:07:14.820633+00:00"
-        },
-        {
-          "interaction_id": "81235ade-8d76-4353-890e-e7dbc56198e9",
-          "timestamp": "2025-05-18T22:34:00.966934+00:00"
-        },
-        {
-          "interaction_id": "312b1753-83b3-48b2-a995-57596d620152",
-          "timestamp": "2025-05-18T22:34:10.791790+00:00"
-        },
-        {
-          "interaction_id": "ca755846-e8c9-42f9-a160-98f1539d896f",
-          "timestamp": "2025-05-18T22:34:24.030905+00:00"
-        },
-        {
-          "interaction_id": "49f671c1-036b-43f4-b331-93dddc9eca68",
-          "timestamp": "2025-05-18T22:34:44.520347+00:00"
-        },
-        {
-          "interaction_id": "782e502a-6f5e-406f-85c6-ed070a971f88",
-          "timestamp": "2025-05-18T22:36:40.196489+00:00"
-        },
-        {
-          "interaction_id": "2438c785-b948-4c74-847c-9cbe0531ec8c",
-          "timestamp": "2025-05-18T22:45:32.840600+00:00"
-        },
-        {
-          "interaction_id": "de477d6c-13da-4b5d-a85d-e5c10e2f6708",
-          "timestamp": "2025-05-18T22:45:59.482023+00:00"
-        }
-      ]
-    },
-    "b11c1fcd-9399-4f43-8e3a-e966ccf4a8a0": {
-      "name": "con1",
-      "created_at": "2025-05-18T22:17:29.146149+00:00",
-      "updated_at": "2025-05-18T22:36:14.588100+00:00",
-      "interactions": [
-        {
-          "interaction_id": "99dd2cc7-caa6-4b47-8f57-128ce3ba57af",
-          "timestamp": "2025-05-18T22:17:29.146149+00:00"
-        },
-        {
-          "interaction_id": "1e5f397a-ccb2-4a86-b86d-dd2207e5d16d",
-          "timestamp": "2025-05-18T22:36:14.588100+00:00"
-        }
-      ]
-    },
-    "18f12e84-3a7c-4e3e-bc89-860cd1c853ca": {
-      "name": "con2",
-      "created_at": "2025-05-18T22:17:38.201778+00:00",
-      "updated_at": "2025-05-18T22:17:42.748103+00:00",
-      "interactions": [
-        {
-          "interaction_id": "843f0621-d9fa-449f-a04f-b5e864ced8c9",
-          "timestamp": "2025-05-18T22:17:38.201778+00:00"
-        }
-      ]
-    },
-    "9483fc95-0c2c-4c41-8900-084f91560a88": {
+    "01d9e77c-f571-4d2e-b736-3baccba7c4cb": {
       "name": "New Chat",
-      "created_at": "2025-05-18T22:44:51.736433+00:00",
-      "updated_at": "2025-05-18T22:44:51.736433+00:00",
+      "created_at": "2025-05-19T22:02:10.977670+00:00",
+      "updated_at": "2025-05-19T22:02:10.977670+00:00",
       "interactions": [
         {
-          "interaction_id": "006c7a51-1fd7-40b4-b5f9-edabd3bb1290",
-          "timestamp": "2025-05-18T22:44:51.736433+00:00"
+          "interaction_id": "77be185e-7250-4645-8a95-5961627fdcad",
+          "timestamp": "2025-05-19T22:02:10.977670+00:00"
+        }
+      ]
+    },
+    "fd994dc4-6ec0-4a41-a470-defcb1cb49a9": {
+      "name": "New Chat",
+      "created_at": "2025-05-19T22:02:16.235644+00:00",
+      "updated_at": "2025-05-19T22:06:58.457732+00:00",
+      "interactions": [
+        {
+          "interaction_id": "4c08701a-1fea-4323-9b7e-090253bbb39f",
+          "timestamp": "2025-05-19T22:02:16.235644+00:00"
+        },
+        {
+          "interaction_id": "5a72de8b-db11-438f-bb66-68868c6162a0",
+          "timestamp": "2025-05-19T22:06:58.457732+00:00"
+        }
+      ]
+    },
+    "e77da2db-3692-4018-95ac-43be169dc25a": {
+      "name": "New Chat",
+      "created_at": "2025-05-19T22:08:28.500466+00:00",
+      "updated_at": "2025-05-19T22:08:28.500466+00:00",
+      "interactions": [
+        {
+          "interaction_id": "5c1b87bf-2195-410e-b027-7c598f38b64c",
+          "timestamp": "2025-05-19T22:08:28.500466+00:00"
+        }
+      ]
+    },
+    "1bbcb206-8afd-4189-9ad6-edb92126e7be": {
+      "name": "New Chat",
+      "created_at": "2025-05-19T22:09:28.371636+00:00",
+      "updated_at": "2025-05-19T22:09:28.371636+00:00",
+      "interactions": [
+        {
+          "interaction_id": "4f2fd42c-ec14-4cf6-9155-86b93a32186b",
+          "timestamp": "2025-05-19T22:09:28.371636+00:00"
         }
       ]
     }
   },
   "created_at": "2025-05-18T18:51:46.319087+00:00",
-  "updated_at": "2025-05-18T22:45:59.482023+00:00"
+  "updated_at": "2025-05-19T22:09:28.372637+00:00"
 }

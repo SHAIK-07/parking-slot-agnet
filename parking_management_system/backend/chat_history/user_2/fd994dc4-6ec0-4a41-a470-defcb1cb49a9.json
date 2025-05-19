@@ -1,0 +1,14 @@
+[
+  {
+    "interaction_id": "4c08701a-1fea-4323-9b7e-090253bbb39f",
+    "user_query": "New conversation",
+    "agent_response": "Welcome to the Parking Management System! How can I assist you today?",
+    "timestamp": "2025-05-19T22:02:16.235644+00:00"
+  },
+  {
+    "interaction_id": "5a72de8b-db11-438f-bb66-68868c6162a0",
+    "user_query": "hello",
+    "agent_response": "Hello Shaik, welcome to the Parking Management System. \nI can help you with:\n* Finding available parking slots\n* Checking parking rates\n* Creating parking bookings\n* Cancelling bookings\n* Viewing booking history\n\nWhat would you like to do today?",
+    "timestamp": "2025-05-19T22:06:58.457732+00:00"
+  }
+]
