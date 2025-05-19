@@ -35,64 +35,78 @@ parking_management_system/
     └── vite.config.js
 ```
 
-## Setup Instructions
+## Installation
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 16+
+- MySQL (or SQLite for development)
+- Groq API key
 
 ### Backend Setup
 
-1. Navigate to the backend directory:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/parking-management-system.git
+   cd parking-management-system
    ```
+
+2. Navigate to the backend directory:
+   ```bash
    cd parking_management_system/backend
    ```
 
-2. Create a virtual environment:
-   ```
+3. Create a virtual environment and activate it:
+   ```bash
    python -m venv venv
+   # On Windows
+   venv\Scripts\activate
+   # On macOS/Linux
+   source venv/bin/activate
    ```
-
-3. Activate the virtual environment:
-   - Windows: `venv\Scripts\activate`
-   - macOS/Linux: `source venv/bin/activate`
 
 4. Install dependencies:
-   ```
+   ```bash
    pip install -r requirements.txt
    ```
 
-5. No need to set up a separate database as we're using SQLite, which is a file-based database.
-
-6. The `.env` file is already configured with the Groq API key.
-
-7. Run the FastAPI application:
+5. Create a `.env` file with the following variables:
    ```
-   uvicorn app.main:app --reload
+   DATABASE_URL=sqlite:///./parking.db
+   GROQ_API_KEY=your_groq_api_key
+   ```
+
+6. Initialize the database:
+   ```bash
+   python init_db.py
+   ```
+
+7. Start the backend server:
+   ```bash
+   python run.py
    ```
 
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
-   ```
-   cd parking_management_system/frontend
+   ```bash
+   cd ../frontend
    ```
 
 2. Install dependencies:
-   ```
+   ```bash
    npm install
    ```
 
 3. Start the development server:
-   ```
+   ```bash
    npm run dev
    ```
 
 4. Open your browser and navigate to `http://localhost:3000`
 
-## API Endpoints
-
-- `GET /`: Welcome message
-- `POST /chat/`: Chat endpoint for the AI assistant
-- `GET /health`: Health check endpoint
-
-## Usage Examples
+## Usage
 
 ### Chat with the AI Assistant
 
@@ -104,15 +118,36 @@ parking_management_system/
    - "Cancel my booking"
    - "Show me my booking history"
 
-## Technologies Used
+## API Endpoints
 
-- **Backend**: Python, FastAPI, SQLAlchemy, Langchain, Groq
-- **LLM**: Llama-3.3-70b-versatile via Groq API
-- **Embeddings**: HuggingFace sentence-transformers
-- **Frontend**: React, Vite, Tailwind CSS
-- **Database**: SQLite (file-based)
-- **Chat Memory**: Simple file-based JSON storage
+- `GET /`: Welcome message
+- `POST /chat/`: Chat endpoint for the AI assistant
+- `GET /health`: Health check endpoint
+
+## Contributing
+
+We welcome contributions to the Parking Management System! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Contribution Guidelines
+
+- Follow the existing code style and conventions
+- Write clear commit messages
+- Add unit tests for new features
+- Update documentation as needed
+- Make sure all tests pass before submitting a pull request
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Groq for providing the LLM API
+- HuggingFace for the sentence-transformers models
+- All contributors who have helped shape this project
